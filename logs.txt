@@ -49,3 +49,6 @@
 {"level":"info","message":"/api/product/add-rating?userId=1111&productId=1&rating=4 - {}","service":"request-logging"}
 {"level":"info","message":"/api/product/add-rating?userId=1&productId=1111&rating=4 - {}","service":"request-logging"}
 {"level":"info","message":"/api/product/add-rating?userId=1&productId=1111&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1111&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}

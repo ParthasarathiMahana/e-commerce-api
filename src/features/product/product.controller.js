@@ -35,14 +35,15 @@ class ProductController{
         res.send(result)
     }
 
-    rateProduct(req, res){
+    rateProduct(req, res, next){
         const {userId, productId, rating} = req.query;
-        // try {
+        // adding try catch because if something goes wrong while calling the addRating method, using the next() method we can call app level error handler in catch block
+        try {
             productModel.addRating(userId, productId, rating);
             res.send("rating added successful.");
-        // } catch (error) {
-        //     res.send(error.message)
-        // }
+        } catch (error) {
+            next(error)
+        }
     }
 }
 
