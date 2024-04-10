@@ -1,4 +1,5 @@
 import userModel from '../user/user.model.js'
+import { ApplicationError } from '../../errorhandler/applicationError.js'
 
 class productModel{
     constructor(id, name, description, imageUrl, category, price, sizes){
@@ -44,17 +45,17 @@ class productModel{
         });
 
         if(!userExist){
-            throw new Error("No user found.")
+            throw new ApplicationError("No user found.", 400)
         }
 
         if(!requiredProduct){
-            throw new Error("No product found.")
+            throw new ApplicationError("No product found.", 404)
         }
 
         // checking if the user exist
         // if(userExist){
-            // checking if the product exist
-            // if(requiredProduct){ 
+        //     // checking if the product exist
+        //     if(requiredProduct){ 
                 if(!requiredProduct.ratings){
                     requiredProduct.ratings = [];
                     requiredProduct.ratings.push({user: userID, rating: rating})
@@ -67,11 +68,12 @@ class productModel{
                     }
                 }
                 return "rating added successfully."
-            // }else{
-            //     return "no such product found!"
-            // }
+        //     }else{
+        //         throw new ApplicationError("no product found", 400)
+        //     }
         // }else{
-        //     return "no such user found!"
+        //     throw new ApplicationError("no such user found!", 404)
+
         // }
     }
 }

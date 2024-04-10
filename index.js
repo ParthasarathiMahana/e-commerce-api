@@ -9,6 +9,7 @@ import swagger from "swagger-ui-express"
 import apiDOc from "./swagger.json" assert {type:'json'}
 import cors from "cors"
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
+import { ApplicationError } from "./src/errorhandler/applicationError.js";
 
 const corsOption = {
     origin:"http://127.0.0.1:5500"
@@ -46,11 +47,11 @@ server.use('/api/cart', jwtAuth, cartRouter)
 
 // handle any error thrown from the application
 server.use(loggerMiddleware, (err, req, res, next)=>{
-    console.log(err);
-    if(err){
-        res.status(503).send("Something went wrong.")
+    if(err instanceof ApplicationError){
+        console.log(err.message, err.code);
+        return res.status(err.code).send(err.message)
     }
-    next()
+    res.status(500).send("Something went wrong.")
 })
 
 // handle the error if user tries to go to path that does not exist
