@@ -40,11 +40,20 @@ server.use(loggerMiddleware)
 server.get('/',(req, res)=>{
     res.json("Hello there...")
 })
-
 server.use('/api/product', jwtAuth, ProductRouter)
 server.use('/api/user', userRouter)
 server.use('/api/cart', jwtAuth, cartRouter)
 
+// handle any error thrown from the application
+server.use(loggerMiddleware, (err, req, res, next)=>{
+    console.log(err);
+    if(err){
+        res.status(503).send("Something went wrong.")
+    }
+    next()
+})
+
+// handle the error if user tries to go to path that does not exist
 server.use((req, res)=>{
     res.status(404).send("Bad request, No such path exist.Explore API doc at:- http://localhost:7000/api-docs/")
 })
