@@ -1,3 +1,5 @@
+import userModel from '../user/user.model.js'
+
 class productModel{
     constructor(id, name, description, imageUrl, category, price, sizes){
         this.id = id,
@@ -34,22 +36,43 @@ class productModel{
     }
 
     static addRating(userID, productID, rating){
+        // getting the product to which rating will be added
         const requiredProduct = products.find((p)=>p.id == productID)
+        // getting the user who's trying to add rating
+        const userExist = userModel.getAllUsers().find((user)=>{
+            return user.id == userID
+        });
+
+        if(!userExist){
+            throw new Error("No user found.")
+        }
+
         if(!requiredProduct){
-            return "no such product found";
+            throw new Error("No product found.")
         }
-        
-        if(!requiredProduct.ratings){
-            requiredProduct.ratings = [];
-            requiredProduct.ratings.push({user: userID, rating: rating})
-        }else{
-            const existingRatingWithSameUser = requiredProduct.ratings.findIndex((r)=>r.user == userID)
-            if(existingRatingWithSameUser >= 0){
-                requiredProduct.ratings[existingRatingWithSameUser].rating = rating
-            }else{
-                requiredProduct.ratings.push({user: userID, rating: rating})
-            }
-        }
+
+        // checking if the user exist
+        // if(userExist){
+            // checking if the product exist
+            // if(requiredProduct){ 
+                if(!requiredProduct.ratings){
+                    requiredProduct.ratings = [];
+                    requiredProduct.ratings.push({user: userID, rating: rating})
+                }else{
+                    const existingRatingWithSameUser = requiredProduct.ratings.findIndex((r)=>r.user == userID)
+                    if(existingRatingWithSameUser >= 0){
+                        requiredProduct.ratings[existingRatingWithSameUser].rating = rating
+                    }else{
+                        requiredProduct.ratings.push({user: userID, rating: rating})
+                    }
+                }
+                return "rating added successfully."
+            // }else{
+            //     return "no such product found!"
+            // }
+        // }else{
+        //     return "no such user found!"
+        // }
     }
 }
 

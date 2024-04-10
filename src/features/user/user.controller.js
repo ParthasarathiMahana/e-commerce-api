@@ -8,7 +8,6 @@ class userController{
     }
 
     signIn(req, res){
-        console.log(req.body);
         const signedInUser = User_model.signIn(req.body);
         if(!signedInUser){
             return res.status(400).send("Invalid user credentials");

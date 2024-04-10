@@ -1,4 +1,29 @@
 {"level":"info","message":"/api/user/signin - {\"email\":\"psm@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
 {"level":"info","message":"/api/user/signin - {\"email\":\"psm@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
 
- Thu Apr 04 2024 11:43:49 GMT+0530 (India Standard Time). logData: /api/user/signin - {"email":"psm@gmail.com","password":"123"}
+ Thu Apr 04 2024 11:43:49 GMT+0530 (India Standard Time). logData: /api/user/signin - {"email":"psm@gmail.com","password":"123"}{"level":"info","message":"/api/user/signin - {\"email\":\"psm@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=11&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/user/signin - {\"email\":\"psm@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=111&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=11&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=11&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/user/signin - {\"email\":\"psm@gmail.com\",\"password\":\"123\"}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=11&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=11&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=11&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=11&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=11&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=11&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=222&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1212&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1212&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=121&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}

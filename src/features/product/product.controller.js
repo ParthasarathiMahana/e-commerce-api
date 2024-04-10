@@ -36,11 +36,14 @@ class ProductController{
     }
 
     rateProduct(req, res){
-        const {userID, rating, productID} = req.query;
-        productModel.addRating(userID, productID, rating)
-        res.send("rating is added.")
+        const {userId, productId, rating} = req.query;
+        try {
+            productModel.addRating(userId, productId, rating);
+            res.send("rating added successful.");
+        } catch (error) {
+            res.send(error.message)
+        }
     }
-
 }
 
 export default ProductController;
