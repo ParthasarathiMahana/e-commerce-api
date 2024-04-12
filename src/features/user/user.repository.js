@@ -19,6 +19,25 @@ class UserRepository{
         return newUser;
     }
 
+    async findUser(email){
+        try {
+            // get database
+            const db = getDb()
+            // get collection
+            const collection = db.collection("users")
+            // insert a document
+            var user = await collection.findOne({email});
+        } catch (error) {
+            console.log(error);
+        }
+
+        if(!user){
+            return null
+        }
+
+        return user
+    }
+
     async signIn({email, password}){
         try {
             // get database

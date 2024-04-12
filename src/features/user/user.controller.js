@@ -2,6 +2,7 @@ import { ApplicationError } from "../../errorhandler/applicationError.js";
 import User_model from "./user.model.js";
 import jwt  from "jsonwebtoken";
 import UserRepository from "./user.repository.js";
+import bcrypt from "bcrypt"
 
 class userController{
     constructor(){
@@ -10,7 +11,8 @@ class userController{
     async signUp(req, res){
         try {
             const {name, email, password, type} = req.body;
-            const newUser = new User_model(name, email, password, type)
+            const hashedPassword = await bcrypt.hash(password, 12)
+            const newUser = new User_model(name, email, hashedPassword, type)
             var responseOfSignup = await this.userRepo.signUp(newUser)
         } catch (error) {
             console.log(error);
@@ -22,13 +24,16 @@ class userController{
     async signIn(req, res){
         try {
             const {email, password} = req.body
-            const signedInUser = await this.userRepo.signIn({email, password})
-            if(!signedInUser){
-                return res.status(400).send("Invalid user credentials");
+            const userFound = await this.userRepo.findUser(email);
+            if(!userFound){
+                return new ApplicationError("invalid email", 401)
             }
-            const token = jwt.sign({id: signedInUser.id, email: signedInUser.email}, "fsgfgssiduhr348rhfhsjd98werf", {expiresIn:'1h'})
-            res.send(token)
-            // res.send(signedInUser)
+            const passwordCompareResult = await bcrypt.compare(password, userFound.password);
+            if(passwordCompareResult){
+                const token = jwt.sign({id: userFound._id, email: userFound.email}, "fsgfgssiduhr348rhfhsjd98werf", {expiresIn:'1h'})
+                return res.send(token)
+            }
+            res.status(400).send("Invalid user credentials");
         } catch (error) {
             console.log(error);
             throw new ApplicationError("Error while signin up", 500)
