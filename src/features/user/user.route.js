@@ -5,5 +5,7 @@ import userController from "./user.controller.js";
 export const userRouter = Router();
 const userControllerObj = new userController();
 
-userRouter.post('/signup', userControllerObj.signUp)
+userRouter.post('/signup', (req, res)=>{
+    userControllerObj.signUp(req, res)
+})
 userRouter.post('/signin', userControllerObj.signIn)
