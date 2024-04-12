@@ -1,9 +1,10 @@
 import { MongoClient } from "mongodb";
 
-const url = "mongodb://localhost:27017/ecomApidb";
+// const url = process.env.MONGO_URL;
+
 let client;
 export const mongoConnection = ()=>{
-    MongoClient.connect(url).then(clientInstance=>{
+    MongoClient.connect(process.env.MONGO_URL).then(clientInstance=>{
         client = clientInstance;
         console.log("Connection to mongoDB is established.");
     }).catch(err=>{

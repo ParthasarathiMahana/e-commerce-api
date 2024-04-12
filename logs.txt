@@ -84,3 +84,6 @@
 {"level":"info","message":"/api/user/signin - {\"email\":\"seller3@ecom.com\",\"password\":\"369\"}","service":"request-logging"}
 {"level":"info","message":"/api/user/signin - {\"email\":\"seller3@ecom.com\",\"password\":\"369\"}","service":"request-logging"}
 {"level":"info","message":"/api/user/signin - {\"email\":\"seller3@ecom.com\",\"password\":\"369\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signin - {\"email\":\"seller3@ecom.com\",\"password\":\"369\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signin - {\"email\":\"seller3@ecom.com\",\"password\":\"36\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signin - {\"email\":\"seller3@ecom.com\",\"password\":\"369\"}","service":"request-logging"}

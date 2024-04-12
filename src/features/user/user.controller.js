@@ -30,7 +30,7 @@ class userController{
             }
             const passwordCompareResult = await bcrypt.compare(password, userFound.password);
             if(passwordCompareResult){
-                const token = jwt.sign({id: userFound._id, email: userFound.email}, "fsgfgssiduhr348rhfhsjd98werf", {expiresIn:'1h'})
+                const token = jwt.sign({id: userFound._id, email: userFound.email}, process.env.JWT_SECRET, {expiresIn:'1h'})
                 return res.send(token)
             }
             res.status(400).send("Invalid user credentials");

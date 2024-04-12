@@ -11,3 +11,10 @@
     1. SignUp: '/api/user/signup'
     2. SignIn: '/api/user/signin'
 - [x] Cart(protected): '/api/cart'
+
+## Concepts used:
+- JWT
+- open api
+- mongoDB
+- winston for logging errors etc...
+- dotenv
