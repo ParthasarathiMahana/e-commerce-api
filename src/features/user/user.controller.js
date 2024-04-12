@@ -1,10 +1,16 @@
+import { ApplicationError } from "../../errorhandler/applicationError.js";
 import User_model from "./user.model.js";
 import jwt  from "jsonwebtoken";
 
 class userController{
-    signUp(req, res){
-        User_model.signUp(req.body)
-        res.send(User_model.getAllUsers())
+    async signUp(req, res){
+        try {
+            var reponseOfSignup = await User_model.signUp(req.body)
+        } catch (error) {
+            console.log(error);
+            throw new ApplicationError("Internal server error", 500)
+        }        
+        res.send(reponseOfSignup)
     }
 
     signIn(req, res){

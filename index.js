@@ -10,6 +10,7 @@ import apiDOc from "./swagger.json" assert {type:'json'}
 import cors from "cors"
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 import { ApplicationError } from "./src/errorhandler/applicationError.js";
+import {mongoConnection} from "./src/config/mongodb.js";
 
 const corsOption = {
     origin:"http://127.0.0.1:5500"
@@ -62,5 +63,6 @@ server.use((req, res)=>{
 server.listen(7000, (err)=>{
     if(!err){
         console.log("server is up and runnig on port 7000");
+        mongoConnection();
     }
 })

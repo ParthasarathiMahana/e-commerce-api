@@ -52,3 +52,13 @@
 {"level":"info","message":"/api/product/add-rating?userId=1&productId=1111&rating=4 - {}","service":"request-logging"}
 {"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
 {"level":"info","message":"/api/product/add-rating?userId=1&productId=1&rating=4 - {}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller\",\"email\":\"seller@ecom.com\",\"password\":\"123\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller\",\"email\":\"seller@ecom.com\",\"password\":\"123\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller\",\"email\":\"seller@ecom.com\",\"password\":\"123\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller\",\"email\":\"seller@ecom.com\",\"password\":\"123\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller\",\"email\":\"seller@ecom.com\",\"password\":\"123\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller\",\"email\":\"seller@ecom.com\",\"password\":\"123\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller\",\"email\":\"seller@ecom.com\",\"password\":\"123\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller1\",\"email\":\"seller1@ecom.com\",\"password\":\"1234\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller1\",\"email\":\"seller1@ecom.com\",\"password\":\"1234\",\"type\":\"seller\"}","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"name\":\"seller1\",\"email\":\"seller1@ecom.com\",\"password\":\"1234\",\"type\":\"seller\"}","service":"request-logging"}
