@@ -8,4 +8,6 @@ const userControllerObj = new userController();
 userRouter.post('/signup', (req, res)=>{
     userControllerObj.signUp(req, res)
 })
-userRouter.post('/signin', userControllerObj.signIn)
+userRouter.post('/signin', (req, res)=>{
+    userControllerObj.signIn(req, res)
+})

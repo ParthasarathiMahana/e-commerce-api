@@ -19,14 +19,20 @@ class userController{
         res.send(responseOfSignup)
     }
 
-    signIn(req, res){
-        const signedInUser = User_model.signIn(req.body);
-        if(!signedInUser){
-            return res.status(400).send("Invalid user credentials");
+    async signIn(req, res){
+        try {
+            const {email, password} = req.body
+            const signedInUser = await this.userRepo.signIn({email, password})
+            if(!signedInUser){
+                return res.status(400).send("Invalid user credentials");
+            }
+            const token = jwt.sign({id: signedInUser.id, email: signedInUser.email}, "fsgfgssiduhr348rhfhsjd98werf", {expiresIn:'1h'})
+            res.send(token)
+            // res.send(signedInUser)
+        } catch (error) {
+            console.log(error);
+            throw new ApplicationError("Error while signin up", 500)
         }
-        const token = jwt.sign({id: signedInUser.id, email: signedInUser.email}, "fsgfgssiduhr348rhfhsjd98werf", {expiresIn:'1h'})
-        res.send(token)
-        // res.send(signedInUser)
     }
 }
 

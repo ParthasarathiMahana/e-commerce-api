@@ -13,11 +13,6 @@ class User_model{
     static getAllUsers(){
         return users;
     }
-
-    static signIn({email, password}){
-        const myUser =  users.find((currentUser)=> email === currentUser.email && password === currentUser.password);
-        return myUser;
-    }
 }
 
 export default User_model;
