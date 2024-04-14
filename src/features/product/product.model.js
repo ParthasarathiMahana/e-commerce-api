@@ -2,8 +2,8 @@ import userModel from '../user/user.model.js'
 import { ApplicationError } from '../../errorhandler/applicationError.js'
 
 class productModel{
-    constructor(id, name, description, imageUrl, category, price, sizes){
-        this.id = id,
+    constructor(name, description, imageUrl, category, price, sizes, id){
+        this._id = id,
         this.name = name,
         this.description = description,
         this.imageUrl = imageUrl,

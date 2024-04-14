@@ -1,46 +1,75 @@
+import { ApplicationError } from "../../errorhandler/applicationError.js";
 import productModel from "./product.model.js";
+import ProductRepository from "./product.repository.js";
 class ProductController{
 
-    getProducts(req, res){
-        res.status(200).send(productModel.getAllProducts())
+    constructor(){
+        this.productRepo = new ProductRepository()
     }
 
-    getOneProduct(req, res){
-        const product = productModel.get(req.params.id)
-        if(!product){
-            res.status(404).send("product not Found")
-        }else{
+    async getProducts(req, res){
+        try {
+            const allProducts = await this.productRepo.getAll();
+            res.send(allProducts)
+        } catch (error) {
+            console.log(error);
+            throw new ApplicationError("Internal server error", 500)
+        }
+    }
+
+    async getOneProduct(req, res){
+        try {
+            const product = await this.productRepo.get(req.params.id)
+            if(!product){
+                return res.status(404).send("product not Found")
+            }
             res.status(200).send(product)
+        } catch (error) {
+            console.log(error);
+            throw new ApplicationError("Internal server error", 500)
         }
     }
 
-    addProduct(req, res){
-        const {name, price, sizes} = req.body;
-        const newProduct = {
-            name,
-            price,
-            sizes : sizes.split(','),
-            imageUrl : req.file.filename
+    async addProduct(req, res){
+        try {
+            const {name, price, sizes} = req.body;
+            const newProduct = new productModel(
+                name,
+                null,
+                req.file.filename,
+                null,
+                parseFloat(price),
+                sizes.split(','),
+            )
+            const newProductInDB  = await this.productRepo.addProduct(newProduct)
+            res.send(newProductInDB)
+        } catch (error) {
+            console.log(error);
+            throw new ApplicationError("Internal server error", 500)
         }
-        const createdProduct = productModel.addProduct(newProduct);
-        res.status(201).send(createdProduct)
     }
 
-    filterProduct(req, res){
-        const minPrice = parseInt(req.query.minPrice)
-        const maxPrice = parseInt(req.query.maxPrice)
-        const category = req.query.category
+    async filterProduct(req, res){
+        try {
+            const minPrice = parseInt(req.query.minPrice)
+            const maxPrice = parseInt(req.query.maxPrice)
+            const category = req.query.category
 
-        const result = productModel.filterProduct(minPrice, maxPrice, category)
-        res.send(result)
+            const result = await this.productRepo.filter(minPrice, maxPrice, category)
+            res.send(result)
+        } catch (error) {
+            console.log(error);
+            throw new ApplicationError("Internal server error", 500)
+        }
     }
 
-    rateProduct(req, res, next){
-        const {userId, productId, rating} = req.query;
+    async rateProduct(req, res, next){
+        const {productId, rating} = req.query;
+        const userId = req.userId;
         // adding try catch because if something goes wrong while calling the addRating method, using the next() method we can call app level error handler in catch block
         try {
-            productModel.addRating(userId, productId, rating);
-            res.send("rating added successful.");
+            const updatedProduct = await this.productRepo.rateProduct(userId, productId, rating)
+            res.send(updatedProduct);
         } catch (error) {
             next(error)
         }
