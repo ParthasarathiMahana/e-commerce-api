@@ -72,6 +72,28 @@ class ProductRepository{
             const db = getDb();
             const collection = db.collection(this.collection);
             // new ObjectId(productId) is deprecated, find a new method to compare the _id
+            // const productForChecking = await collection.findOne({_id: new ObjectId(productId)});
+            // const ratingWithUserFound = productForChecking?.ratings.find(r=> {
+            //     return r.userId == userId
+            // });
+            // if(ratingWithUserFound){
+            //     await collection.updateOne({_id: new ObjectId(productId), "ratings.userId": new ObjectId(userId)},{
+            //         $set:{
+            //             "ratings.$.rating": rating
+            //         }
+            //     })
+            //     return "product updated successfully"
+            // }else{
+            //     const updatedProduct = await collection.updateOne({_id: new ObjectId(productId)},{
+            //         $push: {ratings:{userId: new ObjectId(userId), rating}}
+            //     });
+            //     return updatedProduct
+            // }
+            // 1. removing the existing rating with the specific user
+            await collection.updateOne({_id: new ObjectId(productId)},{
+                $pull: {ratings:{userId: new ObjectId(userId)}}
+            });
+            // 2. adding the new rating
             const updatedProduct = await collection.updateOne({_id: new ObjectId(productId)},{
                 $push: {ratings:{userId: new ObjectId(userId), rating}}
             });
