@@ -71,7 +71,7 @@ class ProductRepository{
         try {
             const db = getDb();
             const collection = db.collection(this.collection);
-            // console.log(ObjectId(productId));
+            // new ObjectId(productId) is deprecated, find a new method to compare the _id
             const updatedProduct = await collection.updateOne({_id: new ObjectId(productId)},{
                 $push: {ratings:{userId: new ObjectId(userId), rating}}
             });
